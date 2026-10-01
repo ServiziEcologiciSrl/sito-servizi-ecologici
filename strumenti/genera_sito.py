@@ -441,7 +441,7 @@ def piede(base):
 """
 
 
-def modulo(preselezionato=None):
+def modulo(base, preselezionato=None):
     scelte = "".join(
         f'<div class="scelta"><input type="radio" name="servizio" id="s{i}" value="{esc(s["valore"])}"'
         f'{" checked" if s["valore"] == preselezionato else ""}><label for="s{i}">{icona(s["icona"])}{esc(s["valore"])}</label></div>'
@@ -473,7 +473,7 @@ def modulo(preselezionato=None):
       <div class="campo"><label for="f-email">Email (facoltativa)</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
       <div class="campo"><label for="f-note">Descrivi in breve il lavoro (facoltativo)</label><textarea id="f-note" name="note" placeholder="Es. tettoia in eternit di circa 20 m², fossa biologica da svuotare…"></textarea></div>
       <input type="text" name="sito_web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-      <label class="consenso"><input type="checkbox" name="privacy" required data-nome="Privacy"> <span>Acconsento al trattamento dei miei dati per ricevere il preventivo, come indicato nell'<a href="/privacy.html" target="_blank">informativa privacy</a>.</span></label>
+      <label class="consenso"><input type="checkbox" name="privacy" required data-nome="Privacy"> <span>Acconsento al trattamento dei miei dati per ricevere il preventivo, come indicato nell'<a href="{base}privacy.html" target="_blank">informativa privacy</a>.</span></label>
       <div class="azioni-form"><button class="btn btn-bordo" data-indietro>Indietro</button><button class="btn btn-primario" type="submit">Invia la richiesta</button></div>
     </fieldset>
     <p class="errore" role="alert"></p>
@@ -558,7 +558,7 @@ def home():
       <li>Pronto intervento spurghi</li>
     </ul>
   </div>
-  {modulo()}
+  {modulo(base)}
 </div></section>
 
 <div class="fiducia"><div class="wrap">
@@ -683,7 +683,7 @@ def pagina_servizio(s):
     <h2>Altri servizi</h2>
     <ul>{altri}</ul>
   </article>
-  <aside>{modulo(s['valore'])}</aside>
+  <aside>{modulo(base, s['valore'])}</aside>
 </div></section>
 {cta_finale(base)}
 """
