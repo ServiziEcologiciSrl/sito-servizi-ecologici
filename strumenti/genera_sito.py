@@ -56,9 +56,9 @@ def icona(nome, cls=""):
             f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONE[nome]}</svg>')
 
 
-LOGO_SVG = ('<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#0f7a4a"/>'
-            '<path d="M14 32c0-11 8-18 21-18 0 13-7 21-18 21-1.2 0-2.2-.2-3-.5" fill="#8bd346"/>'
-            '<path d="M13 36c4-7 9-12 16-15" stroke="#0a4f31" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>')
+LOGO_SVG = ('<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#1d5fbf"/>'
+            '<path d="M14 32c0-11 8-18 21-18 0 13-7 21-18 21-1.2 0-2.2-.2-3-.5" fill="#4fb3ff"/>'
+            '<path d="M13 36c4-7 9-12 16-15" stroke="#0b3a7e" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>')
 
 # ---------------------------------------------------------------- servizi
 # Ordine = servizi più richiesti nel registro chiamate 2026 (rifiuti, amianto, pulizie, canne fumarie).
@@ -364,7 +364,7 @@ def testa(titolo, desc, percorso, base, schema):
 <title>{esc(titolo)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{url}">
-<meta name="theme-color" content="#0f7a4a">
+<meta name="theme-color" content="#1d5fbf">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="Servizi Ecologici">
