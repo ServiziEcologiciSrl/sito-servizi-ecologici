@@ -110,7 +110,7 @@ def testa(titolo, desc, percorso, base, schema):
 <body>
 <a class="sr-only" href="#contenuto">Vai al contenuto</a>
 <div class="topbar"><div class="wrap">
-  <span><span class="pulse"></span>Preventivo gratuito · Nidi di vespe e calabroni: interventi prioritari</span>
+  <span><span class="pulse"></span>Numero verde <a href="tel:{DATI['verde_link']}">{DATI['verde']}</a> · servizi 24 ore su 24, 7 giorni su 7</span>
   <span class="solo-desktop">Chiamaci: <a href="tel:{DATI['tel_link']}">{DATI['tel']}</a> · <a href="mailto:{DATI['email']}">{DATI['email']}</a></span>
 </div></div>
 <header class="header"><div class="wrap">
@@ -144,6 +144,7 @@ def piede(base):
     <a class="logo" href="{base}index.html">{LOGO_SVG}<span>Servizi Ecologici S.r.l.<small>{DATI['sottotitolo']}</small></span></a>
     <p>Disinfestazione, derattizzazione, allontanamento volatili e sanificazione in Liguria e nel basso Piemonte. Servizi per l'ambiente dal 1975.</p>
     <ul>
+      <li><a href="tel:{DATI['verde_link']}">Numero verde {DATI['verde']}</a></li>
       <li><a href="tel:{DATI['tel_link']}">Tel. {DATI['tel']}</a></li>
       <li><a href="{wa}">WhatsApp {DATI['cell']}</a></li>
       <li><a href="mailto:{DATI['email']}">{DATI['email']}</a></li>
@@ -155,7 +156,7 @@ def piede(base):
   <div><h4>Settori</h4><ul>{sett}</ul></div>
   <div><h4>Anche per te</h4><ul>
     <li><a href="{DATI['sito_principale']}/">Tutti i servizi di Servizi Ecologici</a></li>
-    <li>Rifiuti e cassoni scarrabili</li><li>Rimozione amianto</li><li>Spurghi e fosse biologiche</li><li>Canne fumarie e cappe</li><li>Analisi ambientali e acque</li>
+    <li>Rifiuti e cassoni scarrabili</li><li>Rimozione amianto</li><li>Spurghi, canaljet e fosse biologiche</li><li>Canne fumarie e cappe</li><li>Pulizia serbatoi e relining tubazioni</li><li>Analisi acque e Legionella</li>
   </ul></div>
   <div class="legale">
     <span>© <span data-anno>2026</span> {DATI['nome']} · Sede legale {DATI['sede_legale']} · P. IVA {DATI['piva']} · Albo Gestori Ambientali n. {DATI['albo']}</span>

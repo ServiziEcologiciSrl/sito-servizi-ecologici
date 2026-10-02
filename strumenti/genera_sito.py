@@ -18,6 +18,8 @@ DATI = {
     "tel": "019 690774",
     "tel_link": "+39019690774",
     "cell": "329 591 5142",
+    "verde": "800 015576",
+    "verde_link": "+39800015576",
     "whatsapp": "393295915142",
     "email": "servizi@serviziecologici.it",
     "sede_op": "Via Fiume 3, 17024 Finalborgo – Finale Ligure (SV)",
@@ -183,6 +185,8 @@ SERVIZI = [
                 "<strong>Pulizia canne fumarie</strong> di camini, stufe, caldaie e forni a legna",
                 "Pulizia e igienizzazione delle <strong>cappe</strong> di cucine civili e industriali",
                 "Pulizia delle <strong>canalizzazioni dell'aria</strong> e dei condizionatori, anche sulle barche",
+                "<strong>Prove di tenuta</strong>, <strong>risanamento con sistemi non invasivi</strong> e <strong>intubamento</strong> delle canne fumarie",
+                "<strong>Certificazione di conformità</strong> della canna fumaria",
             ]),
             ("Per chi", ["Privati con camino o stufa", "Pizzerie, ristoranti, mense e hotel", "Uffici e strutture ricettive", "Condomini"]),
             ("I documenti che ricevi", [
@@ -242,6 +246,7 @@ SERVIZI = [
             ("Cosa facciamo", [
                 "<strong>Pulizia, bonifica e dismissione</strong> di cisterne e serbatoi interrati e fuori terra",
                 "<strong>Certificato gas-free</strong> e di avvenuta bonifica a fine lavori",
+                "<strong>Pulizia di serbatoi di acqua potabile</strong> e vasche: aspirazione dei fondami con canaljet, pulizia manuale e disinfezione delle pareti",
                 "Inertizzazione dei serbatoi",
                 "<strong>Bonifica di siti contaminati</strong> e rimozione di <strong>discariche abusive</strong>",
                 "Smaltimento dei residui oleosi e dei rifiuti pericolosi",
@@ -301,7 +306,10 @@ SERVIZI = [
             ("Cosa facciamo", [
                 "<strong>Analisi di caratterizzazione</strong> dei rifiuti solidi e liquidi",
                 "<strong>Analisi amianto</strong> (MOCF e SEM)",
-                "Analisi delle <strong>acque potabili</strong>, anche per la Legionella",
+                "Analisi delle <strong>acque potabili</strong> (rischio chimico-fisico e batteriologico) e <strong>controllo del rischio Legionella</strong>",
+                "<strong>Sanificazione delle tubazioni</strong> e dei raccordi idraulici contro la Legionella",
+                "<strong>Analisi e pulizia dell'acqua delle piscine</strong>",
+                "Prelievo dei campioni da parte di un nostro operatore e <strong>relazione tecnica</strong> finale",
                 "Analisi degli inerti e delle terre e rocce da scavo",
                 "Supporto per <strong>RENTRI</strong>, FIR digitale, registro di carico e scarico e <strong>MUD</strong>",
             ]),
@@ -381,7 +389,7 @@ def testa(titolo, desc, percorso, base, schema):
 <body>
 <a class="sr-only" href="#contenuto">Vai al contenuto</a>
 <div class="topbar"><div class="wrap">
-  <span><span class="pulse"></span>Preventivo gratuito · Pronto intervento spurghi anche nei festivi</span>
+  <span><span class="pulse"></span>Numero verde <a href="tel:{DATI['verde_link']}">{DATI['verde']}</a> · servizi 24 ore su 24, 7 giorni su 7</span>
   <span class="solo-desktop">Chiamaci: <a href="tel:{DATI['tel_link']}">{DATI['tel']}</a> · <a href="mailto:{DATI['email']}">{DATI['email']}</a></span>
 </div></div>
 <header class="header"><div class="wrap">
@@ -415,6 +423,7 @@ def piede(base):
   </div>
   <div><h4>Servizi</h4><ul>{servizi}</ul></div>
   <div><h4>Contatti</h4><ul>
+    <li><a href="tel:{DATI['verde_link']}">Numero verde {DATI['verde']}</a></li>
     <li><a href="tel:{DATI['tel_link']}">Tel. {DATI['tel']}</a></li>
     <li><a href="{wa}">WhatsApp {DATI['cell']}</a></li>
     <li><a href="mailto:{DATI['email']}">{DATI['email']}</a></li>

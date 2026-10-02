@@ -24,7 +24,9 @@ Stile e script (`assets/style.css`, `assets/main.js`) si modificano direttamente
 1. **Indirizzo del sito**: nel file dati è impostato `disinfestazione.serviziecologici.it` (da confermare).
 2. **Modulo preventivo**: in `assets/main.js` inserire `FORM_ENDPOINT` (es. Formspree), come nel sito principale.
 3. **Riferimenti normativi** dei pacchetti (`LEGGI` nel file dati): farli controllare al consulente HACCP/sicurezza.
-4. **Servizi da confermare**: Legionella, trattamenti in quota (vespe, processionaria), cimici dei letti,
-   lampade cattura-insetti, interventi a bordo. Togliere quelli che l'azienda non offre.
+4. **Servizi confermati dai depliant aziendali**: Legionella (analisi e sanificazione tubazioni), igienizzazione
+   impianti di condizionamento, allontanamento volatili (anche ultrasuoni e centraline), analisi e pulizia piscine,
+   numero verde 800 015576 attivo 24/7. **Ancora da confermare**: trattamenti in quota (vespe, processionaria),
+   cimici dei letti, lampade cattura-insetti, interventi a bordo.
 5. **Certificazioni**: se l'azienda ha certificazioni del settore (es. UNI EN 16636) aggiungerle: sono un forte motivo di fiducia.
 6. **Foto vere** di tecnici, mezzi ed erogatori, e recensioni Google reali.
