@@ -1,0 +1,272 @@
+<title>Pacchetti Der/Dis e Cappe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Listino a schede: intestazione aziendale, griglia di pacchetti con prezzo pieno vs prezzo pacchetto, poi extra e condizioni come nei preventivi */
+:root {
+  --bg: #f4f7fc;
+  --carta: #ffffff;
+  --fg: #12203a;
+  --fg-2: #4a5872;
+  --linea: #d9e2f0;
+  --blu: #1d5fbf;
+  --blu-scuro: #0b3a7e;
+  --blu-chiaro: #e7effb;
+  --arancio: #e8650c;
+  --arancio-chiaro: #fff0e4;
+  --ok: #18794e;
+  --display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --testo: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0b1424; --carta: #121e33; --fg: #e6edf8; --fg-2: #a3b2c9; --linea: #24344f;
+  --blu: #6ea8ff; --blu-scuro: #9cc3ff; --blu-chiaro: #17294a; --arancio: #ff9447; --arancio-chiaro: #33220f; --ok: #4cc38a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0b1424; --carta: #121e33; --fg: #e6edf8; --fg-2: #a3b2c9; --linea: #24344f;
+  --blu: #6ea8ff; --blu-scuro: #9cc3ff; --blu-chiaro: #17294a; --arancio: #ff9447; --arancio-chiaro: #33220f; --ok: #4cc38a; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--testo); font-size: 15px; line-height: 1.55; margin: 0; padding-inline: 16px; padding-block: 0 48px; }
+.pagina { max-width: 1120px; margin: 0 auto; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+.num { font-variant-numeric: tabular-nums; }
+
+.bozza { background: var(--arancio-chiaro); color: var(--fg); border: 1px dashed var(--arancio); border-radius: 10px; padding: 10px 14px; font-size: .88rem; margin-top: 20px; }
+.bozza strong { color: var(--arancio); }
+
+.testata { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: flex-end; padding-block: 28px 22px; border-bottom: 3px solid var(--blu); }
+.marchio { display: flex; gap: 14px; align-items: center; }
+.marchio svg { width: 52px; height: 52px; flex: none; }
+.marchio .nome { font-family: var(--display); font-weight: 800; font-size: 1.25rem; }
+.marchio .sotto { font-size: .82rem; color: var(--fg-2); }
+.contatti { font-size: .85rem; color: var(--fg-2); text-align: right; }
+.contatti strong { color: var(--fg); }
+
+.intro { display: grid; gap: 10px; max-width: 760px; }
+.eyebrow { font-size: .76rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blu); }
+.intro h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
+.intro p { margin: 0; color: var(--fg-2); font-size: 1.02rem; }
+
+.filtri { display: flex; flex-wrap: wrap; gap: 8px; }
+.filtri button { font: inherit; font-weight: 600; font-size: .88rem; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--linea); background: var(--carta); color: var(--fg); cursor: pointer; }
+.filtri button[aria-pressed="true"] { background: var(--blu); border-color: var(--blu); color: var(--carta); }
+.filtri button:focus-visible { outline: 3px solid var(--arancio); outline-offset: 2px; }
+
+.griglia { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+.pacchetto { background: var(--carta); border: 1px solid var(--linea); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pacchetto.top { border: 2px solid var(--blu); }
+.testa { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.per { font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blu); }
+.pacchetto h2 { font-size: 1.3rem; margin-top: 3px; }
+.badge { flex: none; font-size: .72rem; font-weight: 700; background: var(--arancio); color: #fff; padding: 4px 10px; border-radius: 999px; }
+.voci { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.voci li { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--linea); font-size: .93rem; }
+.voci li span:last-child { color: var(--fg-2); white-space: nowrap; }
+.voci small { display: block; color: var(--fg-2); font-size: .8rem; }
+.prezzi { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 6px 12px; background: var(--blu-chiaro); border-radius: 12px; padding: 14px 16px; }
+.prezzi .pieno { color: var(--fg-2); font-size: .88rem; }
+.prezzi .pieno s { white-space: nowrap; }
+.prezzi .finale { font-family: var(--display); font-weight: 800; font-size: 1.9rem; color: var(--blu-scuro); line-height: 1; white-space: nowrap; }
+.prezzi .finale small { font-family: var(--testo); font-size: .78rem; font-weight: 600; color: var(--fg-2); }
+.prezzi .risparmio { grid-column: 1 / -1; font-size: .85rem; font-weight: 700; color: var(--ok); }
+.leggi { display: flex; flex-wrap: wrap; gap: 6px; }
+.leggi span { font-size: .74rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--linea); color: var(--fg-2); }
+.nota { font-size: .86rem; color: var(--fg-2); margin: 0; }
+
+.sezione { background: var(--carta); border: 1px solid var(--linea); border-radius: 16px; padding: 22px; display: grid; gap: 14px; min-width: 0; }
+.sezione h2 { font-size: 1.25rem; }
+.tabella { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 520px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+th { font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); font-weight: 700; }
+td.p { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+th.p { text-align: right; }
+.due { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.condizioni { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.condizioni li { padding-left: 22px; position: relative; font-size: .93rem; }
+.condizioni li::before { content: ""; position: absolute; left: 4px; top: .6em; width: 7px; height: 7px; border-radius: 2px; background: var(--blu); }
+.legge-lista { display: grid; gap: 10px; margin: 0; }
+.legge-lista div { display: grid; grid-template-columns: 190px 1fr; gap: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--linea); }
+.legge-lista dt { font-weight: 700; color: var(--blu-scuro); }
+.legge-lista dd { margin: 0; color: var(--fg-2); font-size: .92rem; }
+.piede { font-size: .82rem; color: var(--fg-2); text-align: center; }
+
+@media (max-width: 760px) {
+  .due { grid-template-columns: 1fr; }
+  .contatti { text-align: left; }
+  .legge-lista div { grid-template-columns: 1fr; gap: 2px; }
+  .griglia { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) { .pacchetto { transition: border-color .2s; } }
+</style>
+
+<div class="pagina">
+  <p class="bozza"><strong>Bozza interna.</strong> Prezzi dei pacchetti proposti partendo dal listino 2025/2026 e dai preventivi recenti: da confermare con la direzione prima di inviarli ai clienti. Togliere questo riquadro nella versione per il cliente.</p>
+
+  <header class="testata">
+    <div class="marchio">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#1d5fbf"/><path d="M24 9l12 4.5v8.5c0 8-5.2 14.2-12 17-6.8-2.8-12-9-12-17v-8.5z" fill="#4fb3ff"/><path d="M18.5 23.5l4 4 7.5-8" stroke="#0b3a7e" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><div class="nome">Servizi Ecologici S.r.l.</div><div class="sotto">Disinfestazione · Derattizzazione · Pulizia cappe e canne fumarie</div></div>
+    </div>
+    <div class="contatti">
+      Dep. Op. Via Fiume 3 – 17024 Finale Ligure (SV)<br>
+      Tel. <strong>019 690774</strong> · <strong>servizi@serviziecologici.it</strong>
+    </div>
+  </header>
+
+  <section class="intro">
+    <span class="eyebrow">Pacchetti annuali 2026/2027</span>
+    <h1>Derattizzazione, disinfestazione e pulizia cappe in un unico contratto</h1>
+    <p>Mettiamo insieme gli interventi che ogni attività deve fare durante l'anno. Un solo fornitore, un calendario di passaggi programmati e un prezzo più basso rispetto ai singoli interventi.</p>
+  </section>
+
+  <div class="filtri" role="group" aria-label="Filtra i pacchetti">
+    <button type="button" id="f-tutti" data-filtro="tutti" aria-pressed="true">Tutti</button>
+    <button type="button" id="f-attivita" data-filtro="attivita" aria-pressed="false">Attività alimentari</button>
+    <button type="button" id="f-condomini" data-filtro="condomini" aria-pressed="false">Condomini</button>
+    <button type="button" id="f-privati" data-filtro="privati" aria-pressed="false">Privati</button>
+  </div>
+
+  <section class="griglia" id="griglia" aria-label="Pacchetti">
+
+    <article class="pacchetto" data-gruppo="attivita">
+      <div class="testa"><div><span class="per">Pizzerie e ristoranti</span><h2>Pizzeria Base</h2></div></div>
+      <ul class="voci">
+        <li><span>Derattizzazione + disinfestazione locali<small>4 passaggi nell'anno, erogatori e gel</small></span><span class="num">320 €</span></li>
+        <li><span>Pulizia cappa e canna fumaria con videoispezione<small>1 intervento, max 3 ore, con rapporto</small></span><span class="num">450 €</span></li>
+      </ul>
+      <div class="prezzi"><span class="pieno">Singoli interventi <s class="num">770 €</s></span><span class="finale num">690 €<small> /anno</small></span><span class="risparmio num">Risparmi 80 € (−10%)</span></div>
+      <div class="leggi"><span>Reg. CE 852/2004</span><span>D.M. 3/9/2021 antincendio</span><span>UNI 10683</span><span>Reg. UE 528/2012</span></div>
+    </article>
+
+    <article class="pacchetto top" data-gruppo="attivita">
+      <div class="testa"><div><span class="per">Pizzerie con forno a legna</span><h2>Pizzeria Sicura</h2></div><span class="badge">Consigliato</span></div>
+      <ul class="voci">
+        <li><span>Derattizzazione + disinfestazione locali<small>4 passaggi nell'anno</small></span><span class="num">320 €</span></li>
+        <li><span>Pulizia cappa e canna fumaria con videoispezione<small>2 interventi all'anno (ogni 6 mesi)</small></span><span class="num">900 €</span></li>
+        <li><span>Analisi acqua potabile<small>D.Lgs. 18/2023, prelievo compreso</small></span><span class="num">180 €</span></li>
+      </ul>
+      <div class="prezzi"><span class="pieno">Singoli interventi <s class="num">1.400 €</s></span><span class="finale num">1.240 €<small> /anno</small></span><span class="risparmio num">Risparmi 160 € (−11%)</span></div>
+      <div class="leggi"><span>Reg. CE 852/2004</span><span>D.Lgs. 18/2023</span><span>D.M. 3/9/2021 antincendio</span><span>UNI 10683</span></div>
+      <p class="nota">Il forno a legna lavora tutti i giorni: con due pulizie l'anno la canna fumaria resta sotto controllo e il rischio di incendio si riduce.</p>
+    </article>
+
+    <article class="pacchetto" data-gruppo="attivita">
+      <div class="testa"><div><span class="per">Hotel, ristoranti, B&amp;B con cucina</span><h2>Hotel &amp; Ristorante</h2></div></div>
+      <ul class="voci">
+        <li><span>Derattizzazione + disinfestazione locali<small>4 passaggi nell'anno</small></span><span class="num">320 €</span></li>
+        <li><span>Pulizia cappa e canna fumaria con videoispezione<small>2 interventi all'anno</small></span><span class="num">900 €</span></li>
+        <li><span>Analisi acqua potabile + Legionella<small>profilo base D.Lgs. 18/2023 + ricerca Legionella</small></span><span class="num">250 €</span></li>
+        <li><span>Igienizzazione ambienti<small>1 intervento (sottotetti, magazzini, locali)</small></span><span class="num">350 €</span></li>
+      </ul>
+      <div class="prezzi"><span class="pieno">Singoli interventi <s class="num">1.820 €</s></span><span class="finale num">1.590 €<small> /anno</small></span><span class="risparmio num">Risparmi 230 € (−13%)</span></div>
+      <div class="leggi"><span>Reg. CE 852/2004</span><span>D.Lgs. 18/2023</span><span>Linee guida Legionella 2015</span><span>D.M. 3/9/2021</span></div>
+    </article>
+
+    <article class="pacchetto" data-gruppo="attivita">
+      <div class="testa"><div><span class="per">Bar, pasticcerie, panifici</span><h2>Bar &amp; Laboratorio</h2></div></div>
+      <ul class="voci">
+        <li><span>Derattizzazione + disinfestazione locali<small>4 passaggi nell'anno</small></span><span class="num">320 €</span></li>
+        <li><span>Pulizia cappa del laboratorio con videoispezione<small>1 intervento, max 3 ore</small></span><span class="num">450 €</span></li>
+        <li><span>Analisi acqua potabile<small>anche per macchina caffè e ghiaccio</small></span><span class="num">180 €</span></li>
+      </ul>
+      <div class="prezzi"><span class="pieno">Singoli interventi <s class="num">950 €</s></span><span class="finale num">850 €<small> /anno</small></span><span class="risparmio num">Risparmi 100 € (−11%)</span></div>
+      <div class="leggi"><span>Reg. CE 852/2004</span><span>D.Lgs. 18/2023</span><span>D.M. 3/9/2021 antincendio</span></div>
+    </article>
+
+    <article class="pacchetto" data-gruppo="attivita">
+      <div class="testa"><div><span class="per">Negozi, magazzini, attività senza cucina</span><h2>Infestanti Zero</h2></div></div>
+      <ul class="voci">
+        <li><span>Derattizzazione + disinfestazione locali<small>4 passaggi nell'anno</small></span><span class="num">320 €</span></li>
+        <li><span>Disinfestazione straordinaria con atomizzatore<small>½ giornata, su chiamata (formiche, blatte, zanzare)</small></span><span class="num">300 €</span></li>
+      </ul>
+      <div class="prezzi"><span class="pieno">Singoli interventi <s class="num">620 €</s></span><span class="finale num">560 €<small> /anno</small></span><span class="risparmio num">Risparmi 60 € (−10%)</span></div>
+      <div class="leggi"><span>Reg. CE 852/2004</span><span>Reg. UE 528/2012</span></div>
+    </article>
+
+    <article class="pacchetto" data-gruppo="condomini">
+      <div class="testa"><div><span class="per">Amministratori di condominio</span><h2>Condominio Sereno</h2></div></div>
+      <ul class="voci">
+        <li><span>Derattizzazione parti comuni<small>3 passaggi, fino a 4 erogatori</small></span><span class="num">160 €</span></li>
+        <li><span>Disinfestazione parti comuni<small>1 intervento</small></span><span class="num">155 €</span></li>
+      </ul>
+      <div class="prezzi"><span class="pieno">Singoli interventi <s class="num">315 €</s></span><span class="finale num">280 €<small> /anno</small></span><span class="risparmio num">Risparmi 35 € (−11%)</span></div>
+      <p class="nota"><strong>Amministratori con almeno 10 condomini:</strong> derattizzazione + disinfestazione con 3 passaggi a <span class="num">200 €</span> per condominio (listino). Erogatori oltre i 4 da valutare.</p>
+      <div class="leggi"><span>Reg. UE 528/2012</span><span>D.Lgs. 152/2006</span></div>
+    </article>
+
+    <article class="pacchetto" data-gruppo="privati">
+      <div class="testa"><div><span class="per">Case e ville</span><h2>Casa Sicura</h2></div></div>
+      <ul class="voci">
+        <li><span>Disinfestazione casa e giardino<small>es. formiche: giardino, perimetro, gel in cucina e sulle finestre</small></span><span class="num">300 €</span></li>
+        <li><span>Pulizia canna fumaria con videoispezione<small>camino o stufa, max 3 ore</small></span><span class="num">280 €</span></li>
+      </ul>
+      <div class="prezzi"><span class="pieno">Singoli interventi <s class="num">580 €</s></span><span class="finale num">520 €<small> /anno</small></span><span class="risparmio num">Risparmi 60 € (−10%)</span></div>
+      <div class="leggi"><span>UNI 10683</span><span>Reg. UE 528/2012</span></div>
+    </article>
+
+  </section>
+
+  <div class="due">
+    <section class="sezione">
+      <h2>Extra e interventi su richiesta</h2>
+      <div class="tabella"><table>
+        <thead><tr><th>Servizio</th><th class="p">Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>Rimozione nido di vespe o calabroni (dopo sopralluogo)</td><td class="p">da 350 €</td></tr>
+          <tr><td>Disinfestazione con atomizzatore, giornata intera</td><td class="p">500 €</td></tr>
+          <tr><td>Igienizzazione ambienti (polvere, sottotetti, travi)</td><td class="p">350 €</td></tr>
+          <tr><td>Canna fumaria: ore oltre la 3ª</td><td class="p">100 €/h</td></tr>
+          <tr><td>Canne fumarie di grandi dimensioni</td><td class="p">200 €/m</td></tr>
+          <tr><td>Erogatore esche aggiuntivo grande / piccolo</td><td class="p">15 € / 9 €</td></tr>
+          <tr><td>Analisi acqua per verifica Legionella</td><td class="p">100 €</td></tr>
+          <tr><td>Analisi urgente (esito in 5 giorni lavorativi)</td><td class="p">+50%</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sezione">
+      <h2>Condizioni</h2>
+      <ul class="condizioni">
+        <li>Prezzi IVA esclusa: l'IVA sarà aggiunta in fattura a norma di legge.</li>
+        <li>Prezzi validi per la zona Savona – Sanremo. Genova e Ventimiglia: prezzi dedicati (canne fumarie attività 700 €, privati 380 €).</li>
+        <li>+30% per interventi in giorni prefestivi diurni (06:00–22:00); +60% per interventi festivi e notturni (22:00–06:00).</li>
+        <li>A carico del cliente: accesso alle aree, energia elettrica, acqua.</li>
+        <li>Canne fumarie: escluse eventuali opere provvisionali (cestello, ponteggi).</li>
+        <li>Per i fumogeni in intercapedine il foro deve essere già presente all'arrivo dell'operatore.</li>
+        <li>Validità dell'offerta: 10 giorni dalla data del preventivo.</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="sezione">
+    <h2>Le leggi di riferimento, in breve</h2>
+    <dl class="legge-lista">
+      <div><dt>Reg. CE 852/2004</dt><dd>Igiene degli alimenti: chi prepara o serve cibo deve controllare gli infestanti e tenere puliti gli impianti di aspirazione (piano HACCP).</dd></div>
+      <div><dt>D.Lgs. 18/2023</dt><dd>Qualità dell'acqua destinata al consumo umano: controlli sull'acqua servita ai clienti.</dd></div>
+      <div><dt>Linee guida Legionella 2015</dt><dd>Prevenzione della legionellosi nelle strutture ricettive: valutazione del rischio e controlli sull'impianto idrico.</dd></div>
+      <div><dt>D.M. 3 settembre 2021</dt><dd>Sicurezza antincendio nei luoghi di lavoro: manutenzione e pulizia di cappe e condotti.</dd></div>
+      <div><dt>Norma UNI 10683</dt><dd>Camini, stufe e forni a legna o pellet: controllo e pulizia periodica della canna fumaria.</dd></div>
+      <div><dt>Reg. UE 528/2012</dt><dd>Biocidi: si usano solo prodotti autorizzati, applicati da personale formato.</dd></div>
+      <div><dt>D.Lgs. 152/2006</dt><dd>Testo unico ambientale: smaltimento corretto dei residui degli interventi.</dd></div>
+    </dl>
+    <p class="nota">Riferimenti indicativi: gli obblighi precisi dipendono dall'attività. In caso di dubbi confrontati con il tuo consulente HACCP o per la sicurezza.</p>
+  </section>
+
+  <p class="piede">Servizi Ecologici S.r.l. · Sede Via Fieno 3, 20123 Milano · P. IVA 09843370157 · Albo Gestori Ambientali MI03807</p>
+</div>
+
+<script>
+(function () {
+  var bottoni = document.querySelectorAll(".filtri button");
+  var carte = document.querySelectorAll(".pacchetto");
+  bottoni.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.getAttribute("data-filtro");
+      bottoni.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      carte.forEach(function (c) { c.hidden = !(f === "tutti" || c.getAttribute("data-gruppo") === f); });
+    });
+  });
+})();
+</script>
